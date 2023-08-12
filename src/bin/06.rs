@@ -75,10 +75,10 @@ pub fn part_one(input: &str) -> Option<usize> {
         .map(|line| line.parse::<Instruction>().unwrap())
         .collect();
 
-    let mut grid = &mut [[0_u8; 1000]; 1000];
+    let grid = &mut [[0_u8; 1000]; 1000];
 
     for instruction in instructions {
-        instruction.execute(&mut grid, true);
+        instruction.execute(grid, true);
     }
 
     Some(
@@ -94,10 +94,10 @@ pub fn part_two(input: &str) -> Option<u32> {
         .map(|line| line.parse::<Instruction>().unwrap())
         .collect();
 
-    let mut grid = &mut [[0_u8; 1000]; 1000];
+    let grid = &mut [[0_u8; 1000]; 1000];
 
     for instruction in instructions {
-        instruction.execute(&mut grid, false);
+        instruction.execute(grid, false);
     }
 
     Some(
