@@ -19,7 +19,7 @@ impl<'a> Distance<'a> {
     }
 }
 
-fn calculate_distances(distances: &Vec<Distance>) -> Vec<u32> {
+fn calculate_distances(distances: &[Distance]) -> Vec<u32> {
     let cities: BTreeSet<&str> = distances.iter().flat_map(|d| vec![d.from, d.to]).collect();
     let perms = cities.iter().permutations(cities.len()).collect::<Vec<_>>();
     perms

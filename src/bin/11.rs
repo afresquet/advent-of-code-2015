@@ -18,7 +18,7 @@ impl Password {
         loop {
             let current = chars[index];
             let next = current as u8 + 1;
-            if next <= 'z' as u8 {
+            if next <= b'z' {
                 chars[index] = next as char;
                 break;
             }
