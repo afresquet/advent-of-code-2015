@@ -14,13 +14,10 @@ fn sum_of_numbers_minus_red(value: &Value) -> i32 {
         Value::Number(n) => n.as_i64().unwrap() as i32,
         Value::Array(a) => a.iter().map(sum_of_numbers_minus_red).sum(),
         Value::Object(o) => {
-            let red = o
-                .values()
-                .find(|value| match value {
-                    Value::String(s) => s == "red",
-                    _ => false,
-                })
-                .is_some();
+            let red = o.values().any(|value| match value {
+                Value::String(s) => s == "red",
+                _ => false,
+            });
 
             if red {
                 return 0;
