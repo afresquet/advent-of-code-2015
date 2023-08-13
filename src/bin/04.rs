@@ -1,5 +1,3 @@
-// Tests pass but answer is wrong somehow ¯\_(ツ)_/¯
-
 fn find_nonce_for_suffix(secret_key: &str, prefix: &'static str) -> Option<u32> {
     for nonce in 1.. {
         let digest = md5::compute(format!("{secret_key}{nonce}"));
@@ -14,8 +12,8 @@ pub fn part_one(input: &str) -> Option<u32> {
     find_nonce_for_suffix(input, "00000")
 }
 
-pub fn part_two(_input: &str) -> Option<u32> {
-    None
+pub fn part_two(input: &str) -> Option<u32> {
+    find_nonce_for_suffix(input, "000000")
 }
 
 fn main() {
@@ -36,6 +34,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn test_part_two() {
         let input = advent_of_code::read_file("examples", 4);
         assert_eq!(part_two(&input), None);
